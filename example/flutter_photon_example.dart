@@ -1,6 +1,7 @@
-import 'package:flutter_photon/flutter_photon.dart';
+import 'package:flutter_photon/src/photon_api.dart';
 
 void main() {
-  var awesome = Awesome();
-  print('awesome: ${awesome.isAwesome}');
+  final api = PhotonApi();
+  final places = api.forwardSearch('munich');
+  final reverse = api.reverseSearch(48.5, 11.5);
 }

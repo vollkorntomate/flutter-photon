@@ -1,22 +1,43 @@
-A library for Dart developers.
+Wrapper for Komoot's Photon API for Dart/Flutter.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+It supports forward and reverse geocoding as well as search-as-you-type.
+
+## Photon
+
+Photon is a free and open-source API hosted by Komoot and powered by ElasticSearch. It returns data from the OpenStreetMap project,
+which is licensed under the [ODbL License](https://opendatacommons.org/licenses/odbl/).
+
+The API is available at [photon.komoot.io](https://photon.komoot.io))
+and licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+
+**Important:** Please be aware of the Terms and Use of Photon! It is free to use, so please be fair and avoid excessive requests!
 
 ## Usage
 
-A simple usage example:
-
+Forward geocoding:
 ```dart
 import 'package:flutter_photon/flutter_photon.dart';
 
-main() {
-  var awesome = new Awesome();
+void main() async {
+  final api = PhotonApi();
+  final results = await api.forwardSearch('munich');
 }
 ```
 
-## Features and bugs
+Reverse geocoding:
+```dart
+import 'package:flutter_photon/flutter_photon.dart';
 
-Please file feature requests and bugs at the [issue tracker][tracker].
+void main() async {
+  final api = PhotonApi();
+  final results = await api.reverseSearch(48.123, 11.321);
+}
+```
 
-[tracker]: http://example.com/issues/replaceme
+## Features and Bugs
+
+Feel free to open a new issue! I am always happy to improve this package.
+
+## Contribution
+
+Feel free to open pull requests and help improving this package!

@@ -1,13 +1,14 @@
 name: flutter_photon
-description: A starting point for Dart libraries or applications.
-# version: 1.0.0
-# homepage: https://www.example.com
+description: A wrapper of the Komoot Photon API (photon.komoot.io) for Flutter.
+version: 0.1.0
+homepage: https://github.com/vollkorntomate/flutter-photon
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   http: ^0.13.1
+  latlng: ^0.1.0
 
 dev_dependencies:
   pedantic: ^1.9.0

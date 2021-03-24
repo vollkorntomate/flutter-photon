@@ -1,8 +1,8 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// Wrapper of the Komoot Photon API (photon.komoot.io) for Flutter
+/// Provides forward and reverse geocoding as well as search-as-you-type features based on the data of OpenStreetMaps.
+
 library flutter_photon;
 
-export 'src/flutter_photon_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'package:flutter_photon/src/photon_api.dart';
+export 'package:flutter_photon/src/photon_feature.dart';
+export 'package:flutter_photon/src/photon_exception.dart';
