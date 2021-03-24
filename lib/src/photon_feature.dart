@@ -8,6 +8,7 @@ class PhotonFeature {
   /// OpenStreetMap ID
   final int osmId;
   final String osmKey;
+
   /// Possible values are 'R' (relation), 'W' (way), 'N' (node). This may be changed in the future.
   final String osmType;
   final String osmValue;
@@ -17,6 +18,7 @@ class PhotonFeature {
   final List<LatLng>? extent;
 
   final String country;
+
   /// ISO 3166-1 alpha-2 code of the [country]
   final String countryIsoCode;
 

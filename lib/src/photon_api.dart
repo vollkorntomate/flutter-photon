@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_photon/src/photon_feature.dart';
 import 'package:flutter_photon/src/photon_exception.dart';
+import 'package:flutter_photon/src/photon_feature.dart';
 import 'package:http/http.dart' as http;
 
 class PhotonApi {

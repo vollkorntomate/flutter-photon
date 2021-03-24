@@ -4,5 +4,5 @@
 library flutter_photon;
 
 export 'package:flutter_photon/src/photon_api.dart';
-export 'package:flutter_photon/src/photon_feature.dart';
 export 'package:flutter_photon/src/photon_exception.dart';
+export 'package:flutter_photon/src/photon_feature.dart';
