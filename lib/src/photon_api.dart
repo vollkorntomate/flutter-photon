@@ -5,7 +5,7 @@ import 'package:flutter_photon/src/photon_feature.dart';
 import 'package:http/http.dart' as http;
 
 class PhotonApi {
-  final String _baseUrl = 'https://photon.komoot.ai';
+  final String _baseUrl = 'photon.komoot.io';
   final String _forwardEndpoint = '/api';
   final String _reverseEndpoint = '/reverse';
 
