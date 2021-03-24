@@ -62,8 +62,8 @@ class PhotonApi {
       init['limit'] = limit;
     }
     if (latitude != null && longitude != null) {
-      init['lat'] = latitude;
-      init['lon'] = longitude;
+      init['lat'] = '$latitude';
+      init['lon'] = '$longitude';
     }
     if (langCode != null) {
       init['lang'] = langCode.toLowerCase();
