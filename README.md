@@ -1,3 +1,8 @@
+# flutter_photon
+
+[![version](https://img.shields.io/badge/version-0.1.0-green.svg)]()
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
 Wrapper for Komoot's Photon API for Dart/Flutter.
 
 It supports forward and reverse geocoding as well as search-as-you-type.
