@@ -41,7 +41,7 @@ class PhotonApi {
     final queryParams = _buildQueryParams(
         latitude: latitude,
         longitude: longitude,
-        init: radius != null ? {'radius': radius} : {},
+        init: radius != null ? {'radius': '$radius'} : {},
         limit: limit,
         langCode: langCode);
 
@@ -51,15 +51,15 @@ class PhotonApi {
     return _handleResponse(res);
   }
 
-  Map<String, dynamic> _buildQueryParams(
-      {Map<String, dynamic>? init,
+  Map<String, String> _buildQueryParams(
+      {Map<String, String>? init,
       int? limit,
       double? latitude,
       double? longitude,
       String? langCode}) {
     init ??= {};
     if (limit != null) {
-      init['limit'] = limit;
+      init['limit'] = '$limit';
     }
     if (latitude != null && longitude != null) {
       init['lat'] = '$latitude';
