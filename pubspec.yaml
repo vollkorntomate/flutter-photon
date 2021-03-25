@@ -1,7 +1,6 @@
 name: flutter_photon
 description: A wrapper of the Komoot Photon API (photon.komoot.io) for Flutter.
 version: 0.1.0
-authors: [ vollkorntomate ]
 homepage: https://github.com/vollkorntomate/flutter-photon
 repository: https://github.com/vollkorntomate/flutter-photon
 issue_tracker: https://github.com/vollkorntomate/flutter-photon/issues
