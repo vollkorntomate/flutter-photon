@@ -1,8 +1,8 @@
 # flutter_photon
 
-[![version](https://img.shields.io/badge/version-0.1.1-green.svg)]()
+[![version](https://img.shields.io/badge/version-0.2.0-green.svg)]()
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![flutter_photon](https://img.shields.io/badge/pub.dev-v0.1.1-blue.svg)](https://pub.dev/packages/flutter_photon)
+[![flutter_photon](https://img.shields.io/badge/pub.dev-v0.2.0-blue.svg)](https://pub.dev/packages/flutter_photon)
 
 Wrapper for Komoot's Photon API for Dart/Flutter.
 
@@ -40,10 +40,18 @@ void main() async {
 }
 ```
 
+Self-hosted instances (custom URL):
+```dart
+void main() async {
+  final api1 = PhotonApi(baseUrl: 'example.com');
+  final api2 = PhotonApi(baseUrl: 'https://example.com/api');
+}
+```
+
 ## Features and Bugs
 
 Feel free to open a new issue! I am always happy to improve this package.
 
 ## Contribution
 
-Feel free to open pull requests and help improving this package!
+Feel free to open pull requests and help to improve this package!
