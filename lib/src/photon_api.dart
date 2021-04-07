@@ -11,7 +11,7 @@ class PhotonApi {
 
   /// Creates an instance of the Photon API Client.
   /// The [baseUrl] parameter can be set to a custom URL if needed.
-  PhotonApi({String baseUrl = 'photon.komoot.io'})
+  PhotonApi({String baseUrl = 'https://photon.komoot.io'})
       : _baseUri = Uri.parse(_trimTrailingSlash(baseUrl));
 
   static String _trimTrailingSlash(String baseUrl) {

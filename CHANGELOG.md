@@ -1,3 +1,6 @@
+## 0.2.1
+- Bug fixes
+
 ## 0.2.0
 - Add support for self-hosted instances
 - Add support for non-secure requests (HTTP)
