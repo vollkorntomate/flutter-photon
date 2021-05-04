@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_photon/src/photon_bounding_box.dart';
 import 'package:flutter_photon/src/photon_exception.dart';
 import 'package:flutter_photon/src/photon_feature.dart';
 import 'package:http/http.dart' as http;
@@ -21,7 +22,7 @@ class PhotonApi {
   }
 
   /// Does a forward search with the given [searchText].
-  /// Results can be prioritized around a certain [latitude] and [longitude].
+  /// Results can be prioritized around a certain [latitude] and [longitude] or inside a certain [boundingBox].
   /// The [langCode] is an ISO-639-1 language code. Supported languages are EN, DE, FR, IT.
   /// When no [langCode] is given, the default language is the main language at the result's location.
   /// If [secure] is set to false, requests will be performed via HTTP, otherweise HTTPS is used (default).
@@ -31,9 +32,14 @@ class PhotonApi {
       double? latitude,
       double? longitude,
       String? langCode,
+      PhotonBoundingBox? boundingBox,
       bool secure = true}) async {
+    var initialQueryParams = {'q': searchText};
+    if (boundingBox != null) {
+      initialQueryParams['bbox'] = boundingBox.buildRequestString();
+    }
     final queryParams = _buildQueryParams(
-        init: {'q': searchText},
+        init: initialQueryParams,
         limit: limit,
         latitude: latitude,
         longitude: longitude,

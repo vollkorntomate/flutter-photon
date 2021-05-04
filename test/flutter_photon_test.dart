@@ -1,4 +1,5 @@
 import 'package:flutter_photon/flutter_photon.dart';
+import 'package:flutter_photon/src/photon_bounding_box.dart';
 import 'package:test/test.dart';
 
 void main() async {
@@ -26,6 +27,19 @@ void main() async {
       expect(results, isNotEmpty);
       expect(results.first.country, equals('Allemagne'));
     });
+
+    test(' uses the provided bounding box', () async {
+      final bboxBavaria = PhotonBoundingBox(10.0, 46.0, 12.0, 48.0);
+      final bboxThuringia = PhotonBoundingBox(11.0, 50.0, 12.0, 51.0);
+
+      final resultBavaria = await api.forwardSearch('münchen', langCode: 'DE', boundingBox: bboxBavaria);
+      final resultThuringia = await api.forwardSearch('münchen', langCode: 'DE', boundingBox: bboxThuringia);
+
+      expect(resultBavaria, isNotEmpty);
+      expect(resultThuringia, isNotEmpty);
+      expect(resultBavaria.first.state, equalsIgnoringCase('Bayern'));
+      expect(resultThuringia.first.state, equalsIgnoringCase('Thüringen'));
+    });
   });
 
   group('PhotonApi::reverseSearch', () {
@@ -33,7 +47,7 @@ void main() async {
       final results = await api.reverseSearch(48.14368, 11.58775);
       expect(results, isNotEmpty);
     });
-    
+
     test(' gives no result for a place without data', () async {
       final results = await api.reverseSearch(47.8912, 12.4639);
       expect(results, isEmpty);
