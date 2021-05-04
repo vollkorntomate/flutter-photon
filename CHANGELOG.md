@@ -1,3 +1,6 @@
+## 0.3.0
+- Add support for filtering results in a bounding box
+
 ## 0.2.1
 - Bug fixes
 
