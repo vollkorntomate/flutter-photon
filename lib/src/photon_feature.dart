@@ -1,3 +1,4 @@
+import 'package:flutter_photon/src/photon_bounding_box.dart';
 import 'package:latlng/latlng.dart';
 
 /// Contains all data returned from the Photon API
@@ -15,7 +16,11 @@ class PhotonFeature {
   final String type;
 
   /// A list containing two corners (north-west, south-east) if [osmType] is 'R'
-  final List<LatLng>? extent;
+  @Deprecated('Use extentBoundingBox instead')
+  late final List<LatLng>? extent;
+
+  /// The bounding box of a relation (only available if [osmType] is 'R')
+  late final PhotonBoundingBox? extentBoundingBox;
 
   final String country;
 
@@ -49,7 +54,17 @@ class PhotonFeature {
       this.district,
       this.city,
       this.county,
-      this.state);
+      this.state) {
+    final extent = this.extent;
+    if (extent != null && extent.isNotEmpty) {
+      final northWest = extent[0];
+      final southEast = extent[1];
+      extentBoundingBox = PhotonBoundingBox(northWest.longitude,
+          southEast.latitude, southEast.longitude, northWest.latitude);
+    } else {
+      extentBoundingBox = null;
+    }
+  }
 
   factory PhotonFeature.fromJson(Map<String, dynamic> json) {
     final coordinates = json['geometry']['coordinates'] as List<dynamic>;
