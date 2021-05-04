@@ -25,6 +25,7 @@ class PhotonApi {
   /// The [langCode] is an ISO-639-1 language code. Supported languages are EN, DE, FR, IT.
   /// When no [langCode] is given, the default language is the main language at the result's location.
   /// If [secure] is set to false, requests will be performed via HTTP, otherweise HTTPS is used (default).
+  /// Throws an exception if the API response has a status code different than 200.
   Future<List<PhotonFeature>> forwardSearch(String searchText,
       {int? limit,
       double? latitude,
@@ -54,6 +55,7 @@ class PhotonApi {
   /// The [langCode] is an ISO-639-1 language code. Supported languages are EN, DE, FR, IT.
   /// When no [langCode] is given, the default language is the main language at the result's location.
   /// If [secure] is set to false, requests will be performed via HTTP, otherweise HTTPS is used (default).
+  /// Throws an exception if the API response has a status code different than 200.
   Future<List<PhotonFeature>> reverseSearch(double latitude, double longitude,
       {int? limit, String? langCode, int? radius, bool secure = true}) async {
     final queryParams = _buildQueryParams(
