@@ -17,7 +17,8 @@ void main() async {
     });
 
     test(' prioritizes places close to given location', () async {
-      final results = await api.forwardSearch('munich', latitude: 48.6701, longitude: -98.8485);
+      final results = await api.forwardSearch('munich',
+          latitude: 48.6701, longitude: -98.8485);
       expect(results, isNotEmpty);
       expect(results.first.countryIsoCode, equalsIgnoringCase('US'));
     });
@@ -32,8 +33,10 @@ void main() async {
       final bboxBavaria = PhotonBoundingBox(10.0, 46.0, 12.0, 48.0);
       final bboxThuringia = PhotonBoundingBox(11.0, 50.0, 12.0, 51.0);
 
-      final resultBavaria = await api.forwardSearch('münchen', langCode: 'DE', boundingBox: bboxBavaria);
-      final resultThuringia = await api.forwardSearch('münchen', langCode: 'DE', boundingBox: bboxThuringia);
+      final resultBavaria = await api.forwardSearch('münchen',
+          langCode: 'DE', boundingBox: bboxBavaria);
+      final resultThuringia = await api.forwardSearch('münchen',
+          langCode: 'DE', boundingBox: bboxThuringia);
 
       expect(resultBavaria, isNotEmpty);
       expect(resultThuringia, isNotEmpty);
@@ -49,7 +52,8 @@ void main() async {
     });
 
     test(' gives no result for a place without data', () async {
-      final results = await api.reverseSearch(47.8912, 12.4639);
+      // there is nothing at coordinates 1.0, 1.0
+      final results = await api.reverseSearch(1.0, 1.0);
       expect(results, isEmpty);
     });
 
@@ -59,7 +63,8 @@ void main() async {
     });
 
     test(' uses the provided language code', () async {
-      final results = await api.reverseSearch(48.14368, 11.58775, langCode: 'FR');
+      final results =
+          await api.reverseSearch(48.14368, 11.58775, langCode: 'FR');
       expect(results, isNotEmpty);
       expect(results.first.country, equals('Allemagne'));
     });
