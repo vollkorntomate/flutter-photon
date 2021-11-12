@@ -49,7 +49,8 @@ void main() async {
     });
 
     test(' gives no result for a place without data', () async {
-      final results = await api.reverseSearch(47.8912, 12.4639);
+      // there is nothing at coordinates 1.0, 1.0
+      final results = await api.reverseSearch(1.0, 1.0);
       expect(results, isEmpty);
     });
 
