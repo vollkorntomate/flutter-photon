@@ -1,3 +1,10 @@
+## 0.4.0
+- Fix exceptions when searching for oceans
+- Fix exceptions with integer coordinates
+- Remove Latlng as dependency
+- BREAKING CHANGE: `latitude` and `longitude` are now `num` instead of `double`
+- BREAKING CHANGE: `country` and `countryIsoCode` are now `String?` instead of `String`
+
 ## 0.3.0
 - Add support for filtering results in a bounding box
 
