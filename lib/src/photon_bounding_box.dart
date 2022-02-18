@@ -1,10 +1,10 @@
-import 'package:latlng/latlng.dart';
+import 'package:flutter_photon/src/lat_lng.dart';
 
 class PhotonBoundingBox {
   LatLng southWest;
   LatLng northEast;
 
-  PhotonBoundingBox(double lonSW, double latSW, double lonNE, double latNE)
+  PhotonBoundingBox(num lonSW, num latSW, num lonNE, num latNE)
       : northEast = LatLng(latNE, lonNE),
         southWest = LatLng(latSW, lonSW);
 

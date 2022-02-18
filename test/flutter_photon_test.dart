@@ -11,6 +11,11 @@ void main() async {
       expect(results, isNotEmpty);
     });
 
+    test(' returns elements for oceans', () async {
+      final results = await api.forwardSearch('Atlantic Ocean');
+      expect(results, isNotEmpty);
+    });
+
     test(' limits results if limit is given', () async {
       final results = await api.forwardSearch('munich', limit: 2);
       expect(results.length, allOf(greaterThan(0), lessThanOrEqualTo(2)));
