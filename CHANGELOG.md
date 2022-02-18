@@ -4,6 +4,7 @@
 - Remove Latlng as dependency
 - BREAKING CHANGE: `latitude` and `longitude` are now `num` instead of `double`
 - BREAKING CHANGE: `country` and `countryIsoCode` are now `String?` instead of `String`
+- Thanks to [hallabrin](https://github.com/hallabrin) for reporting and fixing!
 
 ## 0.3.0
 - Add support for filtering results in a bounding box
