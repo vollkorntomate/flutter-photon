@@ -1,5 +1,5 @@
+import 'package:flutter_photon/src/lat_lng.dart';
 import 'package:flutter_photon/src/photon_bounding_box.dart';
-import 'package:latlng/latlng.dart';
 
 /// Contains all data returned from the Photon API
 class PhotonFeature {
@@ -22,10 +22,10 @@ class PhotonFeature {
   /// The bounding box of a relation (only available if [osmType] is 'R')
   late final PhotonBoundingBox? extentBoundingBox;
 
-  final String country;
+  final String? country;
 
   /// ISO 3166-1 alpha-2 code of the [country]
-  final String countryIsoCode;
+  final String? countryIsoCode;
 
   final String? name;
 
