@@ -13,7 +13,7 @@ It supports forward and reverse geocoding as well as search-as-you-type.
 Photon is a free and open-source API hosted by Komoot and powered by ElasticSearch. It returns data from the OpenStreetMap project,
 which is licensed under the [ODbL License](https://opendatacommons.org/licenses/odbl/).
 
-The API is available at [photon.komoot.io](https://photon.komoot.io))
+The API is available at [photon.komoot.io](https://photon.komoot.io)
 and licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
 
 **Important:** Please be aware of the Terms and Use of Photon! It is free to use, so please be fair and avoid excessive requests!
