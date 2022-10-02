@@ -1,3 +1,6 @@
+## 1.0.0
+- Equal to 0.4.0, I just switched to a more normalized version numbering
+
 ## 0.4.0
 - Fix exceptions when searching for oceans
 - Fix exceptions with integer coordinates
