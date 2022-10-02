@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_photon/src/photon_bounding_box.dart';
 import 'package:flutter_photon/src/photon_exception.dart';
 import 'package:flutter_photon/src/photon_feature.dart';
+import 'package:flutter_photon/src/photon_layer.dart';
 import 'package:http/http.dart' as http;
 
 class PhotonApi {
@@ -33,6 +34,7 @@ class PhotonApi {
       double? longitude,
       String? langCode,
       PhotonBoundingBox? boundingBox,
+      PhotonLayer? layer,
       bool secure = true}) async {
     var initialQueryParams = {'q': searchText};
     if (boundingBox != null) {
@@ -43,7 +45,8 @@ class PhotonApi {
         limit: limit,
         latitude: latitude,
         longitude: longitude,
-        langCode: langCode);
+        langCode: langCode,
+        layer: layer);
 
     final uri = secure
         ? Uri.https(
@@ -63,13 +66,18 @@ class PhotonApi {
   /// If [secure] is set to false, requests will be performed via HTTP, otherweise HTTPS is used (default).
   /// Throws an exception if the API response has a status code different than 200.
   Future<List<PhotonFeature>> reverseSearch(double latitude, double longitude,
-      {int? limit, String? langCode, int? radius, bool secure = true}) async {
+      {int? limit,
+      String? langCode,
+      int? radius,
+      PhotonLayer? layer,
+      bool secure = true}) async {
     final queryParams = _buildQueryParams(
         latitude: latitude,
         longitude: longitude,
         init: radius != null ? {'radius': '$radius'} : {},
         limit: limit,
-        langCode: langCode);
+        langCode: langCode,
+        layer: layer);
 
     final uri = secure
         ? Uri.https(
@@ -86,7 +94,8 @@ class PhotonApi {
       int? limit,
       double? latitude,
       double? longitude,
-      String? langCode}) {
+      String? langCode,
+      PhotonLayer? layer}) {
     init ??= {};
     if (limit != null) {
       init['limit'] = '$limit';
@@ -97,6 +106,9 @@ class PhotonApi {
     }
     if (langCode != null) {
       init['lang'] = langCode.toLowerCase();
+    }
+    if (layer != null) {
+      init['layer'] = layer.toString();
     }
     return init;
   }

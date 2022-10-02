@@ -1,5 +1,6 @@
 import 'package:flutter_photon/flutter_photon.dart';
 import 'package:flutter_photon/src/photon_bounding_box.dart';
+import 'package:flutter_photon/src/photon_layer.dart';
 import 'package:test/test.dart';
 
 void main() async {
@@ -48,6 +49,16 @@ void main() async {
       expect(resultBavaria.first.state, equalsIgnoringCase('Bayern'));
       expect(resultThuringia.first.state, equalsIgnoringCase('Thüringen'));
     });
+
+    test(' uses layer', () async {
+      final resultWithLayer =
+          await api.forwardSearch('bayern', layer: PhotonLayer.state);
+      final resultWithoutLayer = await api.forwardSearch('bayern');
+
+      expect(resultWithLayer.length, equals(1));
+      expect(resultWithLayer.first.type, equals('state'));
+      expect(resultWithoutLayer.length, isNot(resultWithLayer.length));
+    });
   });
 
   group('PhotonApi::reverseSearch', () {
@@ -72,6 +83,16 @@ void main() async {
           await api.reverseSearch(48.14368, 11.58775, langCode: 'FR');
       expect(results, isNotEmpty);
       expect(results.first.country, equals('Allemagne'));
+    });
+
+    test(' uses layer', () async {
+      final resultWithLayer =
+          await api.reverseSearch(48.1379, 11.5734, layer: PhotonLayer.city);
+      final resultWithoutLayer = await api.reverseSearch(48.1379, 11.5734);
+
+      expect(resultWithLayer.length, equals(1));
+      expect(resultWithLayer.first.type, equals('city'));
+      expect(resultWithLayer.first.type, isNot(resultWithoutLayer.first.type));
     });
   });
 }
