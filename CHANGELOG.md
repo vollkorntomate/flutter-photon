@@ -1,7 +1,11 @@
-## 1.0.0
+## 1.1.0 (2022-10-07)
+- Add `layer` option
+- Add `additionalQuery` parameter to support more query parameters and filtering by OSM tag and value
+
+## 1.0.0 (2022-10-02)
 - Equal to 0.4.0, I just switched to a more normalized version numbering
 
-## 0.4.0
+## 0.4.0 (2022-02-18)
 - Fix exceptions when searching for oceans
 - Fix exceptions with integer coordinates
 - Remove Latlng as dependency
@@ -9,7 +13,7 @@
 - BREAKING CHANGE: `country` and `countryIsoCode` are now `String?` instead of `String`
 - Thanks to [hallabrin](https://github.com/hallabrin) for reporting and fixing!
 
-## 0.3.0
+## 0.3.0 (2021-05-04)
 - Add support for filtering results in a bounding box
 
 ## 0.2.1
