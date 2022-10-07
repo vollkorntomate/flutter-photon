@@ -23,10 +23,18 @@ class PhotonApi {
   }
 
   /// Does a forward search with the given [searchText].
+  ///
   /// Results can be prioritized around a certain [latitude] and [longitude] or inside a certain [boundingBox].
+  ///
   /// The [langCode] is an ISO-639-1 language code. Supported languages are EN, DE, FR, IT.
   /// When no [langCode] is given, the default language is the main language at the result's location.
+  ///
+  /// Use [layer] to filter by a certain layer, see [Photon documentation](https://github.com/komoot/photon#filter-results-by-layer) for this.
+  ///
+  /// You can specify your own query parameters in the [additionalQuery] map, for example for [filtering by OSM tags and values](https://github.com/komoot/photon#filter-results-by-tags-and-values)
+  ///
   /// If [secure] is set to false, requests will be performed via HTTP, otherweise HTTPS is used (default).
+  ///
   /// Throws an exception if the API response has a status code different than 200.
   Future<List<PhotonFeature>> forwardSearch(String searchText,
       {int? limit,
@@ -35,6 +43,7 @@ class PhotonApi {
       String? langCode,
       PhotonBoundingBox? boundingBox,
       PhotonLayer? layer,
+      Map<String, String>? additionalQuery,
       bool secure = true}) async {
     var initialQueryParams = {'q': searchText};
     if (boundingBox != null) {
@@ -46,7 +55,8 @@ class PhotonApi {
         latitude: latitude,
         longitude: longitude,
         langCode: langCode,
-        layer: layer);
+        layer: layer,
+        additionalQuery: additionalQuery);
 
     final uri = secure
         ? Uri.https(
@@ -60,16 +70,25 @@ class PhotonApi {
 
   /// Does a reverse search at the given [latitude] and [longitude].
   /// Returns an empty list if there are no results near the given location.
+  ///
   /// Increasing the [radius] can give a higher chance of getting usable results.
+  ///
   /// The [langCode] is an ISO-639-1 language code. Supported languages are EN, DE, FR, IT.
   /// When no [langCode] is given, the default language is the main language at the result's location.
+  ///
+  /// Use [layer] to filter by a certain layer, see [Photon documentation](https://github.com/komoot/photon#filter-results-by-layer) for this.
+  ///
+  /// You can specify your own query parameters in the [additionalQuery] map, for example for [filtering by OSM tags and values](https://github.com/komoot/photon#filter-results-by-tags-and-values)
+  ///
   /// If [secure] is set to false, requests will be performed via HTTP, otherweise HTTPS is used (default).
+  ///
   /// Throws an exception if the API response has a status code different than 200.
   Future<List<PhotonFeature>> reverseSearch(double latitude, double longitude,
       {int? limit,
       String? langCode,
       int? radius,
       PhotonLayer? layer,
+      Map<String, String>? additionalQuery,
       bool secure = true}) async {
     final queryParams = _buildQueryParams(
         latitude: latitude,
@@ -77,7 +96,8 @@ class PhotonApi {
         init: radius != null ? {'radius': '$radius'} : {},
         limit: limit,
         langCode: langCode,
-        layer: layer);
+        layer: layer,
+        additionalQuery: additionalQuery);
 
     final uri = secure
         ? Uri.https(
@@ -95,7 +115,8 @@ class PhotonApi {
       double? latitude,
       double? longitude,
       String? langCode,
-      PhotonLayer? layer}) {
+      PhotonLayer? layer,
+      Map<String, String>? additionalQuery}) {
     init ??= {};
     if (limit != null) {
       init['limit'] = '$limit';
@@ -109,6 +130,9 @@ class PhotonApi {
     }
     if (layer != null) {
       init['layer'] = layer.toString();
+    }
+    if (additionalQuery != null) {
+      init.addAll(additionalQuery);
     }
     return init;
   }
