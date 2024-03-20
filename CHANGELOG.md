@@ -1,3 +1,7 @@
+## 1.2.0 (2024-03-20)
+- Update dependencies to newer versions
+- Now requires Dart ^3.0.0
+
 ## 1.1.0 (2022-10-07)
 - Add `layer` option
 - Add `additionalQuery` parameter to support more query parameters and filtering by OSM tag and value
