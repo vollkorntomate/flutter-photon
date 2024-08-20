@@ -1,3 +1,6 @@
+## 2.0.1 (2024-08-20)
+- Fix formatting and doc comments to satisfy pub.dev analysis (for maximum pub points)
+
 ## 2.0.0 (2024-08-20)
 - BREAKING CHANGE: The way how parameters are used in the search has changed.
 - Support for `osm_tag` and more search parameters

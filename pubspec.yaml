@@ -1,6 +1,6 @@
 name: flutter_photon
 description: An API client for the Komoot Photon API (photon.komoot.io) for Dart and Flutter.
-version: 2.0.0
+version: 2.0.1
 homepage: https://github.com/vollkorntomate/flutter-photon
 repository: https://github.com/vollkorntomate/flutter-photon
 issue_tracker: https://github.com/vollkorntomate/flutter-photon/issues

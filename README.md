@@ -1,8 +1,8 @@
 # flutter_photon
 
-[![version](https://img.shields.io/badge/version-2.0.0-green.svg)]()
+[![version](https://img.shields.io/badge/version-2.0.1-green.svg)]()
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![flutter_photon](https://img.shields.io/badge/pub.dev-v2.0.0-blue.svg)](https://pub.dev/packages/flutter_photon)
+[![flutter_photon](https://img.shields.io/badge/pub.dev-v2.0.1-blue.svg)](https://pub.dev/packages/flutter_photon)
 
 Wrapper for Komoot's Photon API for Dart/Flutter.
 
