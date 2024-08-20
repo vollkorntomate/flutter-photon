@@ -15,10 +15,6 @@ class PhotonFeature {
   final String osmValue;
   final String type;
 
-  /// A list containing two corners (north-west, south-east) if [osmType] is 'R'
-  @Deprecated('Use extentBoundingBox instead')
-  late final List<LatLng>? extent;
-
   /// The bounding box of a relation (only available if [osmType] is 'R')
   late final PhotonBoundingBox? extentBoundingBox;
 
@@ -38,13 +34,12 @@ class PhotonFeature {
   final String? state;
 
   PhotonFeature(
-      this.coordinates,
-      this.osmId,
-      this.osmKey,
-      this.osmType,
-      this.osmValue,
-      this.type,
-      this.extent,
+      {required this.coordinates,
+      required this.osmId,
+      required this.osmKey,
+      required this.osmType,
+      required this.osmValue,
+      required this.type,
       this.country,
       this.countryIsoCode,
       this.name,
@@ -54,15 +49,13 @@ class PhotonFeature {
       this.district,
       this.city,
       this.county,
-      this.state) {
-    final extent = this.extent;
+      this.state,
+      List<LatLng>? extent}) {
     if (extent != null && extent.isNotEmpty) {
       final northWest = extent[0];
       final southEast = extent[1];
       extentBoundingBox = PhotonBoundingBox(northWest.longitude,
           southEast.latitude, southEast.longitude, northWest.latitude);
-    } else {
-      extentBoundingBox = null;
     }
   }
 
@@ -74,7 +67,7 @@ class PhotonFeature {
 
     final osmType = properties['osm_type'];
 
-    var extent;
+    List<LatLng>? extent;
     if (osmType == 'R') {
       final jsonExtent = properties['extent'] as List<dynamic>;
       extent = [
@@ -84,22 +77,22 @@ class PhotonFeature {
     }
 
     return PhotonFeature(
-        center,
-        properties['osm_id'],
-        properties['osm_key'],
-        osmType,
-        properties['osm_value'],
-        properties['type'],
-        extent,
-        properties['country'],
-        properties['countrycode'],
-        properties['name'],
-        properties['street'],
-        properties['housenumber'],
-        properties['postcode'],
-        properties['district'],
-        properties['city'],
-        properties['county'],
-        properties['state']);
+        coordinates: center,
+        osmId: properties['osm_id'],
+        osmKey: properties['osm_key'],
+        osmType: osmType,
+        osmValue: properties['osm_value'],
+        type: properties['type'],
+        extent: extent,
+        country: properties['country'],
+        countryIsoCode: properties['countrycode'],
+        name: properties['name'],
+        street: properties['street'],
+        houseNumber: properties['housenumber'],
+        postcode: properties['postcode'],
+        district: properties['district'],
+        city: properties['city'],
+        county: properties['county'],
+        state: properties['state']);
   }
 }
