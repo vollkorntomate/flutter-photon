@@ -1,6 +1,7 @@
 import 'photon_bounding_box.dart';
 import 'photon_layer.dart';
 
+/// Common parameters used by both forward and reverse search
 class PhotonParams {
   final int? limit;
   final double? latitude;
@@ -48,6 +49,7 @@ class PhotonParams {
   }
 }
 
+/// Parameters used for a forward search
 class PhotonForwardParams extends PhotonParams {
   final PhotonBoundingBox? boundingBox;
   final int? zoom;
@@ -91,6 +93,7 @@ class PhotonForwardParams extends PhotonParams {
   }
 }
 
+/// Parameters used for a reverse search
 class PhotonReverseParams extends PhotonParams {
   final String? queryFilter;
   final bool? distanceSort;

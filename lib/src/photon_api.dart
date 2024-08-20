@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_photon/flutter_photon.dart';
 import 'package:http/http.dart' as http;
 
+/// Wrapper of the Komoot Photon API for Flutter, providing forward and reverse geocoding.
 class PhotonApi {
   final Uri _baseUri;
   final String _forwardEndpoint = '/api';
