@@ -1,5 +1,5 @@
-import 'package:flutter_photon/src/lat_lng.dart';
-import 'package:flutter_photon/src/photon_bounding_box.dart';
+import 'package:flutter_photon/src/models/lat_lng.dart';
+import 'package:flutter_photon/src/models/photon_bounding_box.dart';
 
 /// Contains all data returned from the Photon API
 class PhotonFeature {

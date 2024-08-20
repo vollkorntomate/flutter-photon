@@ -1,6 +1,6 @@
 import 'package:flutter_photon/flutter_photon.dart';
-import 'package:flutter_photon/src/photon_bounding_box.dart';
-import 'package:flutter_photon/src/photon_layer.dart';
+import 'package:flutter_photon/src/models/photon_bounding_box.dart';
+import 'package:flutter_photon/src/models/photon_layer.dart';
 import 'package:test/test.dart';
 
 void main() async {
@@ -18,19 +18,21 @@ void main() async {
     });
 
     test(' limits results if limit is given', () async {
-      final results = await api.forwardSearch('munich', limit: 2);
+      final results = await api.forwardSearch('munich',
+          params: PhotonForwardParams(limit: 2));
       expect(results.length, allOf(greaterThan(0), lessThanOrEqualTo(2)));
     });
 
     test(' prioritizes places close to given location', () async {
       final results = await api.forwardSearch('munich',
-          latitude: 48.6701, longitude: -98.8485);
+          params: PhotonForwardParams(latitude: 48.6701, longitude: -98.8485));
       expect(results, isNotEmpty);
       expect(results.first.countryIsoCode, equalsIgnoringCase('US'));
     });
 
     test(' uses the provided language code', () async {
-      final results = await api.forwardSearch('münchen', langCode: 'FR');
+      final results = await api.forwardSearch('münchen',
+          params: PhotonForwardParams(langCode: 'FR'));
       expect(results, isNotEmpty);
       expect(results.first.country, equals('Allemagne'));
     });
@@ -40,9 +42,11 @@ void main() async {
       final bboxThuringia = PhotonBoundingBox(11.0, 50.0, 12.0, 51.0);
 
       final resultBavaria = await api.forwardSearch('münchen',
-          langCode: 'DE', boundingBox: bboxBavaria);
+          params:
+              PhotonForwardParams(langCode: 'DE', boundingBox: bboxBavaria));
       final resultThuringia = await api.forwardSearch('münchen',
-          langCode: 'DE', boundingBox: bboxThuringia);
+          params:
+              PhotonForwardParams(langCode: 'DE', boundingBox: bboxThuringia));
 
       expect(resultBavaria, isNotEmpty);
       expect(resultThuringia, isNotEmpty);
@@ -51,8 +55,8 @@ void main() async {
     });
 
     test(' uses layer', () async {
-      final resultWithLayer =
-          await api.forwardSearch('bayern', layer: PhotonLayer.state);
+      final resultWithLayer = await api.forwardSearch('bayern',
+          params: PhotonForwardParams(layer: PhotonLayer.state));
       final resultWithoutLayer = await api.forwardSearch('bayern');
 
       expect(resultWithLayer.length, equals(1));
@@ -74,20 +78,21 @@ void main() async {
     });
 
     test(' gives a result for a place without data and a radius', () async {
-      final results = await api.reverseSearch(47.8912, 12.4639, radius: 8);
+      final results = await api.reverseSearch(47.8912, 12.4639,
+          params: PhotonReverseParams(radius: 8));
       expect(results, isNotEmpty);
     });
 
     test(' uses the provided language code', () async {
-      final results =
-          await api.reverseSearch(48.14368, 11.58775, langCode: 'FR');
+      final results = await api.reverseSearch(48.14368, 11.58775,
+          params: PhotonReverseParams(langCode: 'FR'));
       expect(results, isNotEmpty);
       expect(results.first.country, equals('Allemagne'));
     });
 
     test(' uses layer', () async {
-      final resultWithLayer =
-          await api.reverseSearch(48.1379, 11.5734, layer: PhotonLayer.city);
+      final resultWithLayer = await api.reverseSearch(48.1379, 11.5734,
+          params: PhotonReverseParams(layer: PhotonLayer.city));
       final resultWithoutLayer = await api.reverseSearch(48.1379, 11.5734);
 
       expect(resultWithLayer.length, equals(1));

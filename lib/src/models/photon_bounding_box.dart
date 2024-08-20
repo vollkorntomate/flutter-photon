@@ -1,4 +1,4 @@
-import 'package:flutter_photon/src/lat_lng.dart';
+import 'package:flutter_photon/src/models/lat_lng.dart';
 
 class PhotonBoundingBox {
   LatLng southWest;
