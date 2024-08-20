@@ -1,8 +1,8 @@
 # flutter_photon
 
-[![version](https://img.shields.io/badge/version-1.2.0-green.svg)]()
+[![version](https://img.shields.io/badge/version-2.0.0-green.svg)]()
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![flutter_photon](https://img.shields.io/badge/pub.dev-v1.2.0-blue.svg)](https://pub.dev/packages/flutter_photon)
+[![flutter_photon](https://img.shields.io/badge/pub.dev-v2.0.0-blue.svg)](https://pub.dev/packages/flutter_photon)
 
 Wrapper for Komoot's Photon API for Dart/Flutter.
 
@@ -15,6 +15,7 @@ which is licensed under the [ODbL License](https://opendatacommons.org/licenses/
 
 The API is available at [photon.komoot.io](https://photon.komoot.io)
 and licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+Its source code and some documentation is published on [GitHub](https://github.com/komoot/photon).
 
 **Important:** Please be aware of the Terms and Use of Photon! It is free to use, so please be fair and avoid excessive requests!
 
@@ -46,6 +47,8 @@ void main() async {
   final api = PhotonApi(baseUrl: 'https://example.com/api');
 }
 ```
+
+You can find more examples on how to use the API by looking at the [tests](test/flutter_photon_test.dart).
 
 ## Features and Bugs
 

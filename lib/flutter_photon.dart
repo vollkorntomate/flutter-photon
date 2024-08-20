@@ -4,6 +4,7 @@
 library flutter_photon;
 
 export 'package:flutter_photon/src/photon_api.dart';
+export 'package:flutter_photon/src/models/photon_bounding_box.dart';
 export 'package:flutter_photon/src/models/photon_exception.dart';
 export 'package:flutter_photon/src/models/photon_feature.dart';
 export 'package:flutter_photon/src/models/photon_layer.dart';

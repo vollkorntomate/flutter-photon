@@ -1,3 +1,8 @@
+## 2.0.0 (2024-08-20)
+- BREAKING CHANGE: The way how parameters are used in the search has changed.
+- Support for `osm_tag` and more search parameters
+- Remove deprecated extent property
+
 ## 1.2.0 (2024-03-20)
 - Update dependencies to newer versions
 - Now requires Dart ^3.0.0

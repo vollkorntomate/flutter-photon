@@ -1,6 +1,4 @@
 import 'package:flutter_photon/flutter_photon.dart';
-import 'package:flutter_photon/src/models/photon_bounding_box.dart';
-import 'package:flutter_photon/src/models/photon_layer.dart';
 import 'package:test/test.dart';
 
 void main() async {
